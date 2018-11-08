@@ -1,2 +1,0 @@
-# BrainSeg
-Brain Segmentation Project
