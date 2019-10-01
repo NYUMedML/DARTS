@@ -12,9 +12,9 @@ The model is able to perform the segmentation of complete brain **within a minut
 ## Results on the Mindboggle held out data
 The box plot compares the dice scores of different ROIs for Dense U-Net and U-Net. The Dense U-Net consistently outperforms U-Net and achieves good dice scores for most of the ROIs.
 
-![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png)
+![](https://raw.githubusercontent.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png)
 
-![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_2_dn_v_unet.png)
+![](https://raw.githubusercontent.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_2_dn_v_unet.png)
 
 
 ## Using Pretrained models for performing complete brain segmentation
@@ -29,17 +29,9 @@ The output segmentation has 103 labeled segments with the last one being the **N
 We exclude 4 brain regions that are not common to a normal brain: White matter and non-white matter hypointentisites, left and right frontal and temporal poles. We also excluded left and right 'unknown' segments. We also exclude left and right bankssts as there is no common definition for these segments that is widely accepted by the neuroradiology community.
 
 
-The complete list of class number and the corresponding segment name is given below:
-
+The complete list of class number and the corresponding segment name can be found here.
 
 ## Sample Predicitons
-<object data="http://github.com/NYUMedML/BrainSeg/edit/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf" type="application/pdf" width="400px" height="300px">
-    <embed src="http://github.com/NYUMedML/BrainSeg/edit/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://github.com/NYUMedML/BrainSeg/edit/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+Some sample predictions for [Putamen](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Left-Putamen_627549_143_0_1_2.pdf), [Caudate](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Caudate_194443_137_0_1_2.pdf), [Hippocampus](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf) and [Insula](https://github.com/NYUMedML/BrainSeg/blob/master/plots/ctx-lh-insula_147030_138_0_1_2.pdf) can be seen here. In all the images, prediction 1 = Freesurfer, Prediction 2 = Non-Finetuned Dense Unet, Prediction 3 = Finetuned Dense Unet. 
 
-
-
-
-
+It could be seen that Freesurfer often make errors in determining the accurate boundaries whereas the deep learning based models have natural looking ROIs with more accurate boundaries.
