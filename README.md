@@ -11,12 +11,10 @@ The model is able to perform the segmentation of complete brain **within a minut
 
 ## Results on the Mindboggle held out data
 The box plot compares the dice scores of different ROIs for Dense U-Net and U-Net. The Dense U-Net consistently outperforms U-Net and achieves good dice scores for most of the ROIs.
-<img src="https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
-![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png)
 
-![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_2_dn_v_unet.png)
+![Dice-plot-1](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png)
+
+![Dice-plot-2](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_2_dn_v_unet.png)
 
 
 ## Using Pretrained models for performing complete brain segmentation
