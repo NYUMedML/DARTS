@@ -11,7 +11,9 @@ The model is able to perform the segmentation of complete brain **within a minut
 
 ## Results on the Mindboggle held out data
 The box plot compares the dice scores of different ROIs for Dense U-Net and U-Net. The Dense U-Net consistently outperforms U-Net and achieves good dice scores for most of the ROIs.
+
 ![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png)
+
 ![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/compare_dice_plot_aparc_manual_fd_part_2_dn_v_unet.png)
 
 
@@ -31,6 +33,11 @@ The complete list of class number and the corresponding segment name is given be
 
 
 ## Sample Predicitons
+<object data="http://github.com/NYUMedML/BrainSeg/edit/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf" type="application/pdf" width="400px" height="300px">
+    <embed src="http://github.com/NYUMedML/BrainSeg/edit/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://github.com/NYUMedML/BrainSeg/edit/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
 
 
 
