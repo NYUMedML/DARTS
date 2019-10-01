@@ -18,10 +18,12 @@ The box plot compares the dice scores of different ROIs for Dense U-Net and U-Ne
 
 
 ## Using Pretrained models for performing complete brain segmentation
-The users can use the pre-trained models to perform a complete brain MR segmentation. For using the pre-trained models, the user will have to execute the `perform_pred.py` script. An illustration can be seen in `predicting_segmentation_illustration.ipynb` notebook.
+The users can use the pre-trained models to perform a complete brain MR segmentation. For using the pre-trained models, the user will have to execute the [`perform_pred.py`](https://github.com/NYUMedML/BrainSeg/blob/master/perform_pred.py) script. An illustration can be seen in [`predicting_segmentation_illustration.ipynb`](https://github.com/NYUMedML/BrainSeg/blob/master/predicting_segmentation_illustration.ipynb) notebook.
 
 ## Pretrained model wts
-Pretrained model wts can be downloaded from [here](https://drive.google.com/file/d/1m5SSiTFykQc7Bu4UUqE3bX-cotW5-oNK/view?usp=sharing).
+Pretrained model wts can be downloaded from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing). 
+
+There are two model architectures: Dense U-Net and U-Net. Each of the model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain this orientation information. 
 
 ## Output segmentation
 The output segmentation has 103 labeled segments with the last one being the **None** class. The labels of the segmentation closely resembles the aseg+aparc segmentation protocol of Freesurfer. 
