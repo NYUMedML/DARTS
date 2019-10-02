@@ -81,7 +81,7 @@ The complete list of class number and the corresponding segment name can be foun
 
 ## Sample Predicitons
 ### Insula
-Here we can clearly see that Freesurfer (FS) incorrectly predicts the right insula segment, the model trained only using FS segmentations also learns a wrong prediction. Our proposed model which is finetuned on manually annotated dataset correctly captures the region. Moreover, the segment looks biologically natural unlike FS's segmentation which is grainy, non-smooth boundaries and noisy.
+Here we can clearly see that Freesurfer (FS) incorrectly predicts the right insula segment, the model trained only using FS segmentations also learns a wrong prediction. Our proposed model which is finetuned on manually annotated dataset correctly captures the region. Moreover, the segment looks biologically natural unlike FS's segmentation which is grainy, noisy and with non-smooth boundaries.
 ![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/rt_insula_aparc_with_man_3.png)
 
 
