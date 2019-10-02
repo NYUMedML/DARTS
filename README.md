@@ -92,7 +92,7 @@ Here again, we see that FS segmentation is of low quality but our proposed fine-
 FS segmentation for pallidum also of low quality, but the proposed model performs well.
 ![](https://github.com/NYUMedML/BrainSeg/edit/master/plots/Faulty_seg_Pallidum.png)
 
-
+### More predicitons
 Some sample predictions for [Putamen](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Left-Putamen_627549_143_0_1_2.pdf), [Caudate](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Caudate_194443_137_0_1_2.pdf), [Hippocampus](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf) and [Insula](https://github.com/NYUMedML/BrainSeg/blob/master/plots/ctx-lh-insula_147030_138_0_1_2.pdf) can be seen here. In all the images, prediction 1 = Freesurfer, Prediction 2 = Non-Finetuned Dense Unet, Prediction 3 = Finetuned Dense Unet. 
 
 It could be seen that Freesurfer often make errors in determining the accurate boundaries whereas the deep learning based models have natural looking ROIs with more accurate boundaries.
