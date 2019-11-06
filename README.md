@@ -1,5 +1,4 @@
-# BrainSeg
-Brain Segmentation Project
+# DenseUnet-based Automatic Rapid brain Segmentation (DARTS)
 
 ## Paper Associated with the project
 Here is the paper describing the project and experiments in detail (Link to the paper to be updated).
