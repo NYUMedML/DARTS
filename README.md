@@ -10,11 +10,24 @@ The model is able to perform the segmentation of complete brain **within a minut
 
 
 
-## Results on the Mindboggle held out data
+## Quantitative Results on the Mindboggle held out data
 The box plot compares the dice scores of different ROIs for Dense U-Net and U-Net. The Dense U-Net consistently outperforms U-Net and achieves good dice scores for most of the ROIs.
 
 <img src="plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png" width="800" /> 
 <img src="plots/compare_dice_plot_aparc_manual_fd_part_2_dn_v_unet.png" width="800" /> 
+
+## Quanlitative Results on the HCP held out data
+We perform an expert reader evaluation to measure and compare the proposed deep learning models' performance with Freesurfer model. We use HCP held-out test set scans for reader study. On these scans, Freesurfer results have undergone a manual quality control. We also compare the non-finetuned and fine-tuned model with Freesurfer model with manual QC. Seven regions of interest (ROIs) were selected:L/R Putamen (axial view), L/R Pallidum (axial view), L/R Caudate (axial view), L/R Thalamus (axial view), L/R Lateral Ventricles (axial view), L/R Insula (axial view) and L/R Cingulate Gyrus (sagittal view).The readers rated each example on a Likert-type scale from 1 (Poor) to 5 (Excellent). Based on the readers' ratings, we investigate if there are statistically significant differences between the three methods using paired T-test and Wilcoxon signed rank test at 95\% significance level. The results can be seen below.
+| Region of Interest |     Mean Rating±<br>1 std    |     Mean Rating±<br>1 std    |     Mean Rating±<br>1 std    |                               Statistically Significant Difference (s) <br>(as per paired T-test and<br>Wilcoxon signed-rank test)                              |
+|:------------------:|:----------------------------:|:----------------------------:|:----------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|                    |              FS              |              NFT             |              FT              |                                                                                                                                                                 |
+|       Insula       |  L-3.13±0.88<br>R-2.85±1.00  |  L-3.90±1.01<br>R-3.48±1.26  |  L-4.23±0.83<br>R-4.21±0.83  |                                                             L/R - FS and NFT, NFT and FT, FS and FT                                                             |
+|       Caudate      | L- 4.26±0.79<br>R- 3.97±0.75 | L- 4.46±0.70<br>R- 4.17±0.76 | L- 4.45±0.75<br>R- 4.26±0.67 |                                                                   L/R - FS and NFT, FS and FT                                                                   |
+|   Cingulate-Gyrus  | L- 2.59±0.76<br>R- 2.72±0.74 |  L- 2.91±0.97<br>R- 3.0±0.88 | L- 2.53±1.05<br>R- 2.49±0.89 |                                               L - FS and NFT, NFT and FT<br>R - FS and FT, FS and NFT, NFT and FT                                               |
+| Lateral-Ventricles | L- 4.14±0.83<br>R- 4.16±0.73 | L- 4.46±0.66<br>R- 4.39±0.73 | L- 4.44±0.73<br>R- 4.41±0.72 |                                                      L - FS and FT, FS and NFT<br>R - FS and FT, FS and NFT                                                     |
+|      Pallidum      | L- 3.20±0.80<br>R- 3.07±0.65 | L- 3.30±0.79<br>R- 3.72±0.78 | L- 3.87±0.85<br>R- 3.93±0.78 |                                                L - NFT and FT, FS and FT<br>R - FS and NFT, NFT and FT, FS and FT                                               |
+|       Putamen      | L- 3.22±2.14<br>R- 3.10±1.04 | L- 3.16±1.11<br>R- 3.44±1.13 | L- 3.23±1.16<br>R- 3.19±1.13 | L - No difference is statistically significant <br>(as per paired T-test)<br>L - FS and NFT, FS and FT <br>(as per Wilcoxon test)<br>R - FS and NFT, NFT and FT |
+|      Thalamus      | L- 3.40±0.75<br>R- 3.28±0.83 |  L- 4.0±0.88<br>R- 3.96±0.82 | L- 3.95±0.94<br>R- 4.02±0.87 |                                                      L - FS and NFT, FS and FT<br>R - FS and NFT, FS and FT                                                     |
 
 
 ## Using Pretrained models for performing complete brain segmentation
