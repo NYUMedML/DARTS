@@ -18,7 +18,7 @@ The box plot compares the dice scores of different ROIs for Dense U-Net and U-Ne
 
 ## Quanlitative Results on the HCP held out data
 We perform an expert reader evaluation to measure and compare the proposed deep learning models' performance with Freesurfer model. We use HCP held-out test set scans for reader study. On these scans, Freesurfer results have undergone a manual quality control. We also compare the non-finetuned and fine-tuned model with Freesurfer model with manual QC. Seven regions of interest (ROIs) were selected:L/R Putamen (axial view), L/R Pallidum (axial view), L/R Caudate (axial view), L/R Thalamus (axial view), L/R Lateral Ventricles (axial view), L/R Insula (axial view) and L/R Cingulate Gyrus (sagittal view).The readers rated each example on a Likert-type scale from 1 (Poor) to 5 (Excellent). Based on the readers' ratings, we investigate if there are statistically significant differences between the three methods using paired T-test and Wilcoxon signed rank test at 95\% significance level. The results can be seen below.
-<img src="plots/reader_study_results.png" width="500" /> 
+<img src="plots/reader_study_results.png" width="650" /> 
 
 ## Using Pretrained models for performing complete brain segmentation
 The users can use the pre-trained models to perform a complete brain MR segmentation. For using the **coronally** pre-trained models, the user will have to execute the [`perform_pred.py`](https://github.com/NYUMedML/BrainSeg/blob/master/perform_pred.py) script. An illustration can be seen in [`predicting_segmentation_illustration.ipynb`](https://github.com/NYUMedML/BrainSeg/blob/master/predicting_segmentation_illustration.ipynb) notebook.
