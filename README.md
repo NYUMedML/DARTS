@@ -1,7 +1,7 @@
 # DenseUnet-based Automatic Rapid brain Segmentation (DARTS)
 
 ## Paper Associated with the project
-Here is the paper describing the project and experiments in detail (Link to the paper to be updated).
+[Here](https://arxiv.org/abs/1911.05567) is the paper describing the project and experiments in detail.
 
 ## Deep learning models for brain MR segmentation
 We pretrain our Dense Unet model using the Freesurfer segmentations of 1113 subjects available in the [Human Connectome Project](https://www.humanconnectome.org/study/hcp-young-adult/document/1200-subjects-data-release) dataset and fine-tuned the model using 101 manually labeled brain scans from [Mindboggle](https://mindboggle.info/data.html) dataset.
