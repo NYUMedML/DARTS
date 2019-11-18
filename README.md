@@ -3,6 +3,19 @@
 ## Paper Associated with the project
 [Here](https://arxiv.org/abs/1911.05567) is the paper describing the project and experiments in detail.
 
+## Package
+The DARTSeg package can be installed using:
+```
+pip install DARTSeg
+```
+Download the pretrained model from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing) and follow the steps to perform segmentation
+
+```
+from DARTS import Segmentation
+seg_obj = Segmentation(model_wts_path='./dense_unet_saggital_finetuned.pth', model_type="dense-unet", use_gpu=False)
+seg_out, seg_proba_out = seg_obj.predict(inputs="T1.mgz")
+```
+
 ## Deep learning models for brain MR segmentation
 We pretrain our Dense Unet model using the Freesurfer segmentations of 1113 subjects available in the [Human Connectome Project](https://www.humanconnectome.org/study/hcp-young-adult/document/1200-subjects-data-release) dataset and fine-tuned the model using 101 manually labeled brain scans from [Mindboggle](https://mindboggle.info/data.html) dataset.
 
@@ -24,6 +37,7 @@ Based on the readers' ratings, we investigate if there are statistically signifi
 
 ## Using Pretrained models for performing complete brain segmentation
 The users can use the pre-trained models to perform a complete brain MR segmentation. For using the **coronally** pre-trained models, the user will have to execute the [`perform_pred.py`](https://github.com/NYUMedML/BrainSeg/blob/master/perform_pred.py) script. An illustration can be seen in [`predicting_segmentation_illustration.ipynb`](https://github.com/NYUMedML/BrainSeg/blob/master/predicting_segmentation_illustration.ipynb) notebook.
+
 
 The following code block could be used to perform the prediction:
 ```
