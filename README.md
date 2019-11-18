@@ -4,7 +4,7 @@
 [Here](https://arxiv.org/abs/1911.05567) is the paper describing the project and experiments in detail.
 
 ## Package
-The DARTSeg package can be installed using:
+The DARTS package can be installed using:
 ```
 pip install DARTSeg
 ```
@@ -12,7 +12,7 @@ Download the pretrained model from [here](https://drive.google.com/file/d/1-reUD
 
 ```
 from DARTS import Segmentation
-seg_obj = Segmentation(model_wts_path='./dense_unet_saggital_finetuned.pth', model_type="dense-unet", use_gpu=False)
+seg_obj = Segmentation(model_wts_path='./saved_model_wts/dense_unet_saggital_finetuned.pth', model_type="dense-unet", use_gpu=False)
 seg_out, seg_proba_out = seg_obj.predict(inputs="T1.mgz")
 ```
 
