@@ -94,7 +94,7 @@ The output segmentation has 103 labeled segments with the last one being the **N
 We exclude 4 brain regions that are not common to a normal brain: White matter and non-white matter hypointentisites, left and right frontal and temporal poles. We also excluded left and right 'unknown' segments. We also exclude left and right bankssts as there is no common definition for these segments that is widely accepted by the neuroradiology community.
 
 
-The complete list of class number and the corresponding segment name can be found [here](https://github.com/NYUMedML/BrainSeg/blob/master/name_class_mapping.p).
+The complete list of class number and the corresponding segment name can be found [here](https://github.com/NYUMedML/BrainSeg/blob/master/name_class_mapping.p) as a pickled object or [here](https://github.com/NYUMedML/BrainSeg/blob/master/FreeSurferColorLUT_modified.txt) as a .txt file.
 
 ## Sample Predicitons
 ### Insula
