@@ -15,7 +15,7 @@ Upon seccessful installation, you should be able to do `perform_pred.py --help`.
 
 ```
 gdown https://drive.google.com/uc?id=1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ -O saved_model_wts.zip
-unzip saved_model_wts
+unzip saved_model_wts.zip
 ```
 
 * Finally, follow the steps to perform segmentation:
