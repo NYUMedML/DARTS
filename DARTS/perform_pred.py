@@ -1,57 +1,48 @@
+#!/usr/bin/env python
+
 import torch
 import torch.nn as nn
 import numpy as np
 import os
+from os.path import abspath, join as pjoin
 import nibabel
-from models.dense_unet_model import Single_level_densenet, Down_sample, Upsample_n_Concat, Dense_Unet
-# from models.dense_unet_model import *
-from utils import load_data, create_one_hot_seg, back_to_original_4_pred, back_to_original_4_prob, pickling
-from models.unet import Unet,Downsample_block,Upsample_block
+from DARTS.models.dense_unet_model import Single_level_densenet, Down_sample, Upsample_n_Concat, Dense_Unet
+from DARTS.utils import load_data, create_one_hot_seg, back_to_original_4_pred, back_to_original_4_prob, pickling
+from DARTS.models.unet import Unet,Downsample_block,Upsample_block
 
 import argparse
 
+def main():
 
-def str2bool(v):
-    if isinstance(v, bool):
-        return v
-    if v.lower() in ('yes', 'true', 't', 'y', '1'):
-        return True
-    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
+    parser = argparse.ArgumentParser()
 
-parser = argparse.ArgumentParser()
+    parser.add_argument('--input_image_path', type=str,
+                        help='Path to input image (can be of .mgz or .nii.gz format)(required)')
 
-parser.add_argument('--input_image_path', type=str,
-                    help='Path to input image (can be of .mgz or .nii.gz format)(required)')
+    parser.add_argument('--segmentation_dir_path', type=str,
+                        help='Directory path to save the output segmentation (required)')
 
-parser.add_argument('--segmentation_dir_path', type=str,
-                    help='Directory path to save the output segmentation (required)')
+    parser.add_argument('--file_name', type = str,
+                        help= 'Name of the segmentation file (required)')
 
-parser.add_argument('--file_name', type = str,
-                    help= 'Name of the segmentation file (required)')
+    parser.add_argument('--model_type', type = str,default = "dense-unet",
+                        help = 'Model types: "dense-unet", "unet" (default: "dense-unet")')
 
-parser.add_argument('--model_type', type = str,default = "dense-unet",
-                    help = 'Model types: "dense-unet", "unet" (default: "dense-unet")')
+    parser.add_argument('--model_wts_path', type=str,
+                        help='Path for model wts to be used, provide a model from saved_model_wts/')
 
-parser.add_argument('--model_wts_path', type=str, default='./saved_model_wts/dense_unet_back2front_finetuned.pth',
-                    help="Path for model wts to be used (default='./saved_model_wts/dense_unet_back2front_finetuned.pth')")
+    parser.add_argument('--is_mgz', action='store_true', default=False,
+                        help='Use this flag when image is in .mgz format')
 
-parser.add_argument('--is_mgz', type=str2bool, nargs='?',const=True, default=False,
-                    help='Is the image in .mgz format (default=False, default format is .nii.gz)')
+    parser.add_argument('--save_prob', action='store_true', default=False,
+                        help='Use this flag to save the softmax prob values for each voxel')
 
-parser.add_argument('--save_prob', type=str2bool, nargs='?',const=True, default=False,
-                    help='Should the softmax prob values for each voxel be saved ? (default: False)')
-
-parser.add_argument('--use_gpu', type=str2bool, nargs='?',const=True, default=True,
-                    help='Use GPU for inference? (default: True)')
+    parser.add_argument('--use_gpu', action='store_true', default=False,
+                        help='Enable GPU usage (CPU is used by default)')
 
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-
-if __name__=='__main__':
     if args.use_gpu:
         device = 'cuda'
     else:
@@ -127,8 +118,6 @@ if __name__=='__main__':
         pickling(pred_prob_orig,os.path.join(args.segmentation_dir_path,args.file_name+'_prob.nii.gz'))
         print('Prob saved')
     
-    
-    
-    
-    
-    
+if __name__=='__main__':
+    main()
+      
