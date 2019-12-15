@@ -42,11 +42,11 @@ import nibabel
 from PIL import ImageEnhance
 from skimage import data, exposure, img_as_float
 from skimage.filters import gaussian
-from models.unet import Unet,Downsample_block,Upsample_block
+from DARTS import Unet,Downsample_block,Upsample_block
 from train import train_model_self_sup, train_model_non_self_sup
 from loss_func import *
 from dataloader import BrainImages
-from models.dense_unet_model.py import Single_level_densenet,Down_sample,Upsample_n_Concat,Dense_Unet
+from DARTS import Single_level_densenet,Down_sample,Upsample_n_Concat,Dense_Unet
 
 from PIL import ImageEnhance
 from skimage import data, exposure, img_as_float
