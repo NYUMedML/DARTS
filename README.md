@@ -4,11 +4,21 @@
 [Here](https://arxiv.org/abs/1911.05567) is the paper describing the project and experiments in detail.
 
 ## Package
-The DARTS package can be installed using:
+* The DARTS package can be installed as follows:
 ```
 pip install DARTSeg
 ```
-Download the pretrained model from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing) and follow the steps to perform segmentation
+
+Upon seccessful installation, you should be able to do `perform_pred.py --help`.
+
+* Download the pretrained models from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing) as follows:
+
+```
+gdown https://drive.google.com/uc?id=1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ -O saved_model_wts.zip
+unzip saved_model_wts
+```
+
+* Finally, follow the steps to perform segmentation:
 
 ```
 from DARTS import Segmentation
@@ -44,8 +54,8 @@ The following code block could be used to perform the prediction:
 usage: perform_pred.py [-h] [--input_image_path INPUT_IMAGE_PATH]
                        [--segmentation_dir_path SEGMENTATION_DIR_PATH]
                        [--file_name FILE_NAME] [--model_type MODEL_TYPE]
-                       [--model_wts_path MODEL_WTS_PATH] [--is_mgz [IS_MGZ]]
-                       [--save_prob [SAVE_PROB]] [--use_gpu [USE_GPU]]
+                       [--model_wts_path MODEL_WTS_PATH] [--is_mgz]
+                       [--save_prob] [--use_gpu]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -61,26 +71,23 @@ optional arguments:
                         Model types: "dense-unet", "unet" (default: "dense-
                         unet")
   --model_wts_path MODEL_WTS_PATH
-                        Path for model wts to be used (default='./saved_model_
-                        wts/dense_unet_back2front_finetuned.pth')
-  --is_mgz [IS_MGZ]     Is the image in .mgz format (default=False, default
-                        format is .nii.gz)
-  --save_prob [SAVE_PROB]
-                        Should the softmax prob values for each voxel be saved
-                        ? (default: False)
-  --use_gpu [USE_GPU]   Use GPU for inference? (default: True)
+                        Path for model wts to be used, provide a model from
+                        saved_model_wts/
+  --is_mgz              Use this flag when image is in .mgz format
+  --save_prob           Use this flag to save the softmax prob values for each
+                        voxel
+  --use_gpu             Enable GPU usage (CPU is used by default)
 
 ```
 An example could look something like this:
+
 ```
-python3 perform_pred.py --input_image_path './../../../data_orig/199251/mri/T1.mgz' \
+perform_pred.py --input_image_path './../../../data_orig/199251/mri/T1.mgz' \
 --segmentation_dir_path './sample_pred/' \
 --file_name '199251' \
---is_mgz True \
+--is_mgz \
 --model_wts_path './saved_model_wts/dense_unet_back2front_non_finetuned.pth' \
---save_prob False \
 --use_gpu True \
---save_prob False
 ```
 
 ## Pretrained model wts
