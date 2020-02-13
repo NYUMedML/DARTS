@@ -8,7 +8,7 @@ The DARTS package can be installed using:
 ```
 pip install DARTSeg
 ```
-Download the pretrained model from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing) and follow the steps to perform segmentation
+Download the pretrained model from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing) and follow the steps to perform segmentation
 
 ```
 from DARTS import Segmentation
@@ -84,7 +84,7 @@ python3 perform_pred.py --input_image_path './../../../data_orig/199251/mri/T1.m
 ```
 
 ## Pretrained model wts
-Pretrained model wts can be downloaded from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing). 
+Pretrained model wts can be downloaded from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing). 
 
 There are two model architectures: Dense U-Net and U-Net. Each of the model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain the orientation and model architecture information. 
 
