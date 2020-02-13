@@ -38,7 +38,7 @@ from skimage import color
 from torch.optim import lr_scheduler
 from torchvision.utils import make_grid
 import nibabel
-from define_loss_score import dice_loss_2, dice_score
+from loss_func import dice_loss_2, dice_score
 
 from PIL import ImageEnhance
 from skimage import data, exposure, img_as_float
