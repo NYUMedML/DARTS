@@ -13,7 +13,7 @@ Segmentation requires a single GPU. Download the pretrained model from [here](ht
 
 Upon successful installation, you should be able to run `perform_pred.py --help`.
 
-## Pretrained model wts
+## Pre-trained model wts
 * Download the pretrained models from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing) as follows:
 
 ```
@@ -22,7 +22,7 @@ unzip saved_model_wts.zip
 ```
 There are two model architectures: Dense U-Net and U-Net. Each of the model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain the orientation and model architecture information.
 
-## Using Pretrained models to perform complete brain segmentation
+## Using pre-trained models to perform complete brain segmentation
 * Finally, the following code block can be used to perform segmentation:
 
 ```
