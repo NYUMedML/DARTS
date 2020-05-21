@@ -1,0 +1,12 @@
+ipython
+numpy
+nibabel
+pandas
+scipy
+scikit-image
+scikit-learn
+matplotlib
+torch
+torchvision
+Pillow
+gdown
