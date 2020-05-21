@@ -38,18 +38,20 @@ def main():
 #    parser.add_argument('--save_prob', action='store_true', default=False,
 #                        help='Use this flag to save the softmax prob values for each voxel')
 
-    parser.add_argument('--use_gpu', action='store_true', default=False,
-                        help='Enable GPU usage (CPU is used by default)')
+#    parser.add_argument('--use_gpu', action='store_true', default=False,
+#                        help='Enable GPU usage (CPU is used by default)')
 
 
     args = parser.parse_args()
 
     start_time = time.time()
 
-    if args.use_gpu:
+    if torch.cuda.is_available():
         device = 'cuda'
     else:
-        device = 'cpu'
+        print("GPU required")
+        exit()
+
     # load model
     print("Loading model")
 
@@ -61,14 +63,12 @@ def main():
     model = model.to(device)
     model.eval()
 
-    print("Model Loaded, Loading image")
+    print("Model loaded, loading image")
 
     #load image
     input_image, orient, pad_sh1, sh1 , pad_sh2 , sh2, pad_sh3, sh3, affine_map = load_data(args.input_image_path, args.is_mgz)
     input_image[np.isnan(input_image)] = 0
     input_image = np.clip(input_image, a_min=0.0, a_max = np.max(input_image))
-
-    print(input_image.shape)
 
     #segments to be removed
     remove_idx_list = [34, 35, 42, 43, 73, 74, 77, 78, 108, 109]
@@ -107,7 +107,7 @@ def main():
     pred_orig = back_to_original_4_pred(pred_arg_max, orient, pad_sh1, sh1 , pad_sh2 , sh2, pad_sh3, sh3)
 #     pred_prob_orig = back_to_original_4_prob(pred_prob, orient, pad_sh1, sh1 , pad_sh2 , sh2, pad_sh3, sh3)
 
-    print("Segmentation Completed, Saving the predictions")
+    print("Segmentation completed, saving the predictions")
 
     if args.is_mgz:
         pred_orig_nib = nibabel.freesurfer.mghformat.MGHImage(pred_orig.astype(np.float32), None)
