@@ -57,7 +57,6 @@ usage: perform_pred.py [-h] [--input_image_path INPUT_IMAGE_PATH]
                        [--segmentation_dir_path SEGMENTATION_DIR_PATH]
                        [--file_name FILE_NAME] [--model_type MODEL_TYPE]
                        [--model_wts_path MODEL_WTS_PATH] [--is_mgz]
-                       [--save_prob] [--use_gpu]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -76,9 +75,6 @@ optional arguments:
                         Path for model wts to be used, provide a model from
                         saved_model_wts/
   --is_mgz              Use this flag when image is in .mgz format
-  --save_prob           Use this flag to save the softmax prob values for each
-                        voxel
-  --use_gpu             Enable GPU usage (CPU is used by default)
 
 ```
 An example could look something like this:
@@ -89,7 +85,6 @@ perform_pred.py --input_image_path './../../../data_orig/199251/mri/T1.mgz' \
 --file_name '199251' \
 --is_mgz \
 --model_wts_path './saved_model_wts/dense_unet_back2front_non_finetuned.pth' \
---use_gpu True \
 ```
 
 ## Pretrained model wts
