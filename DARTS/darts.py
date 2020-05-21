@@ -106,7 +106,7 @@ class Segmentation(nn.Module):
 
     def predict_single(self, input_image_path, save_output_dir="./", save_proba_file=None, is_mgz=None):
         _ = self.read_image(input_image_path, is_mgz)
-        print("Starting Segmation")
+        print("Starting Segmentation")
         sh2 = self.sh2
         keep_idx_list = self.keep_idx_list
 
