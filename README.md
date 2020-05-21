@@ -79,11 +79,6 @@ We perform an expert reader evaluation to measure and compare the proposed deep 
 Based on the readers' ratings, we investigate if there are statistically significant differences between the three methods using paired T-test and Wilcoxon signed rank test at 95\% significance level. The results can be seen below.
 <img src="plots/reader_study_results.png" width="650" />
 
-## Pretrained model wts
-Pretrained model wts can be downloaded from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing).
-
-There are two model architectures: Dense U-Net and U-Net. Each of the model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain the orientation and model architecture information.
-
 ## Output segmentation
 The output segmentation has 103 labeled segments with the last one being the **None** class. The labels of the segmentation closely resembles the aseg+aparc segmentation protocol of Freesurfer.
 
