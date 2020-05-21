@@ -9,14 +9,16 @@
 pip install DARTSeg
 ```
 
-Upon seccessful installation, you should be able to do `perform_pred.py --help`.
+Upon successful installation, you should be able to do `perform_pred.py --help`.
 
-* Download the pretrained models from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing) as follows:
+## Pretrained model wts
+* Download the pretrained models from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing) as follows:
 
 ```
-gdown https://drive.google.com/uc?id=1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ -O saved_model_wts.zip
+gdown https://drive.google.com/uc?id=1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ -O saved_model_wts.zip
 unzip saved_model_wts.zip
 ```
+There are two model architectures: Dense U-Net and U-Net. Each of the model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain the orientation and model architecture information. 
 
 * Finally, follow the steps to perform segmentation:
 
@@ -30,8 +32,6 @@ seg_out, seg_proba_out = seg_obj.predict(inputs="T1.mgz")
 We pretrain our Dense Unet model using the Freesurfer segmentations of 1113 subjects available in the [Human Connectome Project](https://www.humanconnectome.org/study/hcp-young-adult/document/1200-subjects-data-release) dataset and fine-tuned the model using 101 manually labeled brain scans from [Mindboggle](https://mindboggle.info/data.html) dataset.
 
 The model is able to perform the segmentation of complete brain **within a minute** (on a machine with single GPU). The model labels 102 regions in the brain making it the first model to segment more than 100 brain regions within a minute. The details of 102 regions can be found below.
-
-
 
 ## Quantitative Results on the Mindboggle held out data
 The box plot compares the dice scores of different ROIs for Dense U-Net and U-Net. The Dense U-Net consistently outperforms U-Net and achieves good dice scores for most of the ROIs.
@@ -90,11 +90,6 @@ perform_pred.py --input_image_path './../../../data_orig/199251/mri/T1.mgz' \
 --use_gpu True \
 ```
 
-## Pretrained model wts
-Pretrained model wts can be downloaded from [here](https://drive.google.com/file/d/1-reUDvwBhSOUqOa48W9Vgh_LN3F5ZRjQ/view?usp=sharing). 
-
-There are two model architectures: Dense U-Net and U-Net. Each of the model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain the orientation and model architecture information. 
-
 ## Output segmentation
 The output segmentation has 103 labeled segments with the last one being the **None** class. The labels of the segmentation closely resembles the aseg+aparc segmentation protocol of Freesurfer. 
 
@@ -103,7 +98,7 @@ We exclude 4 brain regions that are not common to a normal brain: White matter a
 
 The complete list of class number and the corresponding segment name can be found [here](https://github.com/NYUMedML/BrainSeg/blob/master/name_class_mapping.p) as a pickled object or [here](https://github.com/NYUMedML/BrainSeg/blob/master/FreeSurferColorLUT_modified.txt) as a .txt file.
 
-## Sample Predicitons
+## Sample Predictions
 ### Insula
 Here we can clearly see that Freesurfer (FS) incorrectly predicts the right insula segment, the model trained only using FS segmentations also learns a wrong prediction. Our proposed model which is finetuned on manually annotated dataset correctly captures the region. Moreover, the segment looks biologically natural unlike FS's segmentation which is grainy, noisy and with non-smooth boundaries.
 <img src="plots/rt_insula_aparc_with_man_3.png" width="800" /> 
@@ -116,7 +111,7 @@ Here again, we see that FS segmentation is of low quality but our proposed fine-
 FS segmentation for pallidum also of low quality, but the proposed model performs well.
 <img src="plots/Faulty_seg_Pallidum.png" width="800" /> 
 
-### More predicitons
+### More predictions
 Some sample predictions for [Putamen](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Left-Putamen_627549_143_0_1_2.pdf), [Caudate](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Caudate_194443_137_0_1_2.pdf), [Hippocampus](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf) and [Insula](https://github.com/NYUMedML/BrainSeg/blob/master/plots/ctx-lh-insula_147030_138_0_1_2.pdf) can be seen here. In all the images, prediction 1 = Freesurfer, Prediction 2 = Non-Finetuned Dense Unet, Prediction 3 = Finetuned Dense Unet. 
 
 It could be seen that Freesurfer often make errors in determining the accurate boundaries whereas the deep learning based models have natural looking ROIs with accurate boundaries.
