@@ -57,7 +57,7 @@ class Segmentation(nn.Module):
             else:
                 self.is_mgz = False
 
-        input_image, orient, pad_sh1, sh1, pad_sh2, sh2, pad_sh3, sh3 = load_data(input_image_path, is_mgz)
+        input_image, orient, pad_sh1, sh1, pad_sh2, sh2, pad_sh3, sh3, affine_map = load_data(input_image_path, is_mgz)
         input_image[np.isnan(input_image)] = 0
         input_image = np.clip(input_image, a_min=0.0, a_max=np.max(input_image))
 
@@ -72,8 +72,8 @@ class Segmentation(nn.Module):
             input_image[:, :, i] = (input_image[:, :, i] - min_value) / (max_value - min_value + 1e-4)
 
         self.input_image = input_image
-        self.orient, self.pad_sh1, self.sh1, self.pad_sh2, self.sh2, self.pad_sh3, self.sh3 = orient, pad_sh1, sh1, \
-                                                                                              pad_sh2, sh2, pad_sh3, sh3
+        self.orient, self.pad_sh1, self.sh1, self.pad_sh2, self.sh2, self.pad_sh3, self.sh3, self.affine_map = orient, pad_sh1, sh1, \
+                                                                                              pad_sh2, sh2, pad_sh3, sh3, affine_map
 
         return self.input_image
 
