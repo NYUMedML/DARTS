@@ -9,9 +9,7 @@
 pip install DARTSeg
 ```
 
-Segmentation requires a single GPU. Download the pretrained model from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing) and follow the steps to perform segmentation
-
-Upon successful installation, you should be able to run `perform_pred.py --help`.
+Upon successful installation, you should be able to run `perform_pred.py --help`. Segmentation requires a single GPU. 
 
 ## Pre-trained model wts
 * Download the pretrained models from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing) as follows:
