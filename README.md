@@ -65,13 +65,13 @@ We pretrain our Dense Unet model using the Freesurfer segmentations of 1113 subj
 
 The model is able to perform the segmentation of complete brain **within a minute** (on a machine with single GPU). The model labels 102 regions in the brain making it the first model to segment more than 100 brain regions within a minute. The details of 102 regions can be found below.
 
-## Quantitative Results on the Mindboggle held out data
+## Quantitative results on the Mindboggle held out data
 The box plot compares the dice scores of different ROIs for Dense U-Net and U-Net. The Dense U-Net consistently outperforms U-Net and achieves good dice scores for most of the ROIs.
 
 <img src="plots/compare_dice_plot_aparc_manual_fd_part_1_dn_v_unet.png" width="800" />
 <img src="plots/compare_dice_plot_aparc_manual_fd_part_2_dn_v_unet.png" width="800" />
 
-## Qualitative Results on the HCP held out data
+## Qualitative results on the HCP held out data
 We perform an expert reader evaluation to measure and compare the proposed deep learning models' performance with Freesurfer model. We use HCP held-out test set scans for reader study. On these scans, Freesurfer results have undergone a manual quality control. We also compare the non-finetuned and fine-tuned model with Freesurfer model with manual QC. Seven regions of interest (ROIs) were selected:L/R Putamen (axial view), L/R Pallidum (axial view), L/R Caudate (axial view), L/R Thalamus (axial view), L/R Lateral Ventricles (axial view), L/R Insula (axial view) and L/R Cingulate Gyrus (sagittal view).The readers rated each example on a Likert-type scale from 1 (Poor) to 5 (Excellent).
 
 Based on the readers' ratings, we investigate if there are statistically significant differences between the three methods using paired T-test and Wilcoxon signed rank test at 95\% significance level. The results can be seen below.
@@ -98,7 +98,7 @@ Here again, we see that FS segmentation is of low quality but our proposed fine-
 FS segmentation for pallidum also of low quality, but the proposed model performs well.
 <img src="plots/Faulty_seg_Pallidum.png" width="800" />
 
-### More predictions
+### More Predictions
 Some sample predictions for [Putamen](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Left-Putamen_627549_143_0_1_2.pdf), [Caudate](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Caudate_194443_137_0_1_2.pdf), [Hippocampus](https://github.com/NYUMedML/BrainSeg/blob/master/plots/Right-Hippocampus_894774_108_0_1_2.pdf) and [Insula](https://github.com/NYUMedML/BrainSeg/blob/master/plots/ctx-lh-insula_147030_138_0_1_2.pdf) can be seen here. In all the images, prediction 1 = Freesurfer, Prediction 2 = Non-Finetuned Dense Unet, Prediction 3 = Finetuned Dense Unet.
 
 We demonstrate that that Freesurfer often makes errors in determining the accurate boundaries whereas the deep learning-based models have natural looking ROIs with accurate boundaries.
