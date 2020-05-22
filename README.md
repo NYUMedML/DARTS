@@ -4,12 +4,10 @@
 [Here](https://arxiv.org/abs/1911.05567) is the paper describing the project and experiments in detail.
 
 ## Package
-* The DARTS package can be installed as follows:
+* The DARTS package can be installed using:
 ```
 pip install DARTSeg
 ```
-
-Upon successful installation, you should be able to run `perform_pred.py --help`. Segmentation requires a single GPU. 
 
 ## Pre-trained model wts
 * Download the pretrained models from [here](https://drive.google.com/file/d/1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ/view?usp=sharing) as follows:
@@ -18,10 +16,19 @@ Upon successful installation, you should be able to run `perform_pred.py --help`
 gdown https://drive.google.com/uc?id=1OJ0RmcALNkiU49Npm7Rez6thIKOf3gLQ -O saved_model_wts.zip
 unzip saved_model_wts.zip
 ```
-There are two model architectures: Dense U-Net and U-Net. Each of the model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain the orientation and model architecture information.
+There are two model architectures: Dense U-Net and U-Net. Each model is trained using 2D slices extracted coronally, sagittally,or axially. The name of the model will contain the orientation and model architecture information.
 
 ## Using pre-trained models to perform complete brain segmentation
-* Finally, the following code block can be used to perform segmentation:
+
+Follow these steps to perform segmentation:
+
+```
+from DARTS import Segmentation
+seg_obj = Segmentation(model_wts_path='./saved_model_wts/dense_unet_saggital_finetuned.pth', model_type="dense-unet")
+seg_out, seg_proba_out = seg_obj.predict(inputs="T1.mgz")
+```
+
+* The user may also execute the perform_pred.py script with the following code block to perform segmentation:
 
 ```
 usage: perform_pred.py [-h] [--input_image_path INPUT_IMAGE_PATH]
@@ -57,15 +64,8 @@ perform_pred.py --input_image_path './../../../data_orig/199251/mri/T1.mgz' \
 --is_mgz \
 --model_wts_path './saved_model_wts/dense_unet_back2front_non_finetuned.pth' \
 ```
-Alternatively, you may follow these steps to perform segmentation:
 
-```
-from DARTS import Segmentation
-seg_obj = Segmentation(model_wts_path='./saved_model_wts/dense_unet_saggital_finetuned.pth', model_type="dense-unet")
-seg_out, seg_proba_out = seg_obj.predict(inputs="T1.mgz")
-```
-
-An illustration can be seen in [`predicting_segmentation_illustration.ipynb`](https://github.com/NYUMedML/BrainSeg/blob/master/predicting_segmentation_illustration.ipynb) notebook.
+An illustration can be seen in [`predicting_segmentation_illustration.ipynb`](https://github.com/NYUMedML/DARTS/blob/master/predicting_segmentation_illustration.ipynb).
 
 ## Deep learning models for brain MR segmentation
 We pretrain our Dense Unet model using the Freesurfer segmentations of 1113 subjects available in the [Human Connectome Project](https://www.humanconnectome.org/study/hcp-young-adult/document/1200-subjects-data-release) dataset and fine-tuned the model using 101 manually labeled brain scans from [Mindboggle](https://mindboggle.info/data.html) dataset.
