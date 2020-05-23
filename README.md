@@ -1,6 +1,6 @@
 # DenseUnet-based Automatic Rapid brain Segmentation (DARTS)
 
-## Paper Associated with the project
+## Paper associated with the project
 [Here](https://arxiv.org/abs/1911.05567) is the paper describing the project and experiments in detail.
 
 ## Package
