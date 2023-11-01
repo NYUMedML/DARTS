@@ -63,9 +63,9 @@ def load_data(path, mgz = False):
 def orient_correctly(img_nii):
     orientation = nibabel.io_orientation(img_nii.affine)
     try:
-        img_new = nibabel.as_closest_canonical(img_nii, True).get_data().astype(float)
+        img_new = nibabel.as_closest_canonical(img_nii, True).get_fdata().astype(float)
     except:
-        img_new = nibabel.as_closest_canonical(img_nii, False).get_data().astype(float)
+        img_new = nibabel.as_closest_canonical(img_nii, False).get_fdata().astype(float)
     img_trans = np.transpose(img_new, (0,2,1))
     img_flip = np.flip(img_trans,0)
     img_flip = np.flip(img_flip,1)
